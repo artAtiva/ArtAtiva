@@ -1,5 +1,7 @@
 package com.generation.artativa.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @Entity
 @Table(name ="tb_categoria")
 public class Categoria {
@@ -22,16 +25,16 @@ public class Categoria {
 	private long id;
 	
 	@NotNull
-	@Size(min = 10, max = 255)
+	@Size(min = 3, max = 255)
 	private String nome;
 	
 	@NotNull
-	@Size(min = 10, max = 255)
+	@Size(min = 3, max = 255)
 	private String descricao;
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private Produto produto;
+	@JsonIgnoreProperties
+	private List<Produto> produto;
 
 	public long getId() {
 		return id;
@@ -57,17 +60,13 @@ public class Categoria {
 		this.descricao = descricao;
 	}
 
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	
-	
-	
-	
 	
 
 }

@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.artativa.model.Categoria;
 import com.generation.artativa.model.Usuario;
 import com.generation.artativa.repository.UsuarioRepository;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
@@ -40,7 +39,7 @@ public class UsuarioController {
 	
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(repository.FindAllByNomeContainingIgnoreCase(nome));
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	@PostMapping
 	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario){
