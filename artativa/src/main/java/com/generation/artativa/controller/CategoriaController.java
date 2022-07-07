@@ -25,8 +25,7 @@ import com.generation.artativa.repository.CategoriaRepository;
 
 public class CategoriaController {
 	
-	@Autowired
-	
+	@Autowired	
 	private CategoriaRepository repository;
 	
 	@GetMapping
