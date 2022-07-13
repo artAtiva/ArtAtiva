@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.generation.artativa.model.Usuario;
+
 public class UserDetailsImpl implements UserDetails  {
 
 	/**
@@ -17,6 +19,11 @@ public class UserDetailsImpl implements UserDetails  {
 	private String password;
 	//autoridade
 	private List<GrantedAuthority> authorities;
+	public UserDetailsImpl (Usuario user){
+		this.userName = user.getUsuario();
+		this.password = user.getSenha();
+	}
+	
 
 
 	@Override
