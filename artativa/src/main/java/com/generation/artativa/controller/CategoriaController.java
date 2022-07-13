@@ -19,10 +19,8 @@ import com.generation.artativa.model.Categoria;
 import com.generation.artativa.repository.CategoriaRepository;
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("/categoria")
-
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/categorias")
 public class CategoriaController {
 	
 	@Autowired	
@@ -34,7 +32,7 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Categoria> getById(@PathVariable long id){
+	public ResponseEntity<Categoria> getById(@PathVariable Long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
@@ -60,7 +58,7 @@ public class CategoriaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id){
+	public void delete(@PathVariable Long id){
 		repository.deleteById(id);
 	}
 

@@ -21,20 +21,20 @@ public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@NotNull
+	@NotNull(message = "Nome é obrigatório!")
 	@Size(min = 3, max = 255)
 	private String nome;
 	
-	@NotNull
+	@NotNull(message = "Descrição é obrigatório!")
 	@Size(min = 3, max = 600)
 	private String descricao;
 	
-	@NotNull
+	@NotNull(message = "Preço é obrigatório!")
 	private double preco;
 	
-	@NotNull
+	@NotNull(message = "Quantidade é obrigatório!")
 	private int quantidade;
 	
 	private String foto;
@@ -50,11 +50,11 @@ public class Produto {
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

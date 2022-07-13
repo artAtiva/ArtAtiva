@@ -32,7 +32,7 @@ public class BasicConfigSecurity extends WebSecurityConfigurerAdapter  {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		// TODO Auto-generated method stub
+
 		return new BCryptPasswordEncoder();
 	}
 	

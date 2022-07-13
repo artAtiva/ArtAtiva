@@ -22,25 +22,25 @@ public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@NotNull
+	@NotNull(message = "Nome é obrigatório!")
 	@Size(min = 3, max = 255)
 	private String nome;
 	
-	@NotNull
+	@NotNull(message = "Descrição é obrigatório!")
 	@Size(min = 3, max = 255)
 	private String descricao;
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties
+	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

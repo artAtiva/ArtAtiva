@@ -19,8 +19,8 @@ import com.generation.artativa.model.Produto;
 import com.generation.artativa.repository.ProdutoRepository;
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("/produto")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/produtos")
 public class ProdutoController {
 	
 	@Autowired
@@ -32,7 +32,7 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> getById(@PathVariable long id){
+	public ResponseEntity<Produto> getById(@PathVariable Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
@@ -57,7 +57,7 @@ public class ProdutoController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public  void deleteProduto(@PathVariable long id) {
+	public  void deleteProduto(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 }
